@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Semana 4 - Gestor de Elementos</title>
+  </head>
+  <body>
+    <h1>Gestor de Datos</h1>
+
+    <!-- Formulario para agregar datos -->
+    <form id="dataForm">
+      <label for="itemInput">Nuevo elemento:</label>
+      <input
+        type="text"
+        id="itemInput"
+        placeholder="Ej. Comprar leche o Producto A"
+        required
+      />
+      <button id="buttonSubmit" type="submit">Agregar</button>
+    </form>
+
+    <!-- Lista donde se renderizan los elementos -->
+    <h2>Lista de Elementos</h2>
+    <ul id="itemList">
+      <!-- Los elementos se agregarán aquí dinámicamente con JavaScript -->
+    </ul>
+
+    <!-- Botón para sincronizar con la API -->
+    <button id="syncButton">Sincronizar con la API</button>
+
+    <script src="app.js"></script>
+  </body>
+</html>
