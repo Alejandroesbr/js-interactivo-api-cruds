@@ -8,7 +8,6 @@
   <body>
     <h1>Gestor de Datos</h1>
 
-    <!-- Formulario para agregar datos -->
     <form id="dataForm">
       <label for="itemInput">Nuevo elemento:</label>
       <input
@@ -20,13 +19,11 @@
       <button id="buttonSubmit" type="submit">Agregar</button>
     </form>
 
-    <!-- Lista donde se renderizan los elementos -->
-    <h2>Lista de Elementos</h2>
-    <ul id="itemList">
-      <!-- Los elementos se agregarán aquí dinámicamente con JavaScript -->
-    </ul>
+    <div id="messegeFeedback"></div>
 
-    <!-- Botón para sincronizar con la API -->
+    <h2>Lista de Elementos</h2>
+    <ul id="itemList"></ul>
+
     <button id="syncButton">Sincronizar con la API</button>
 
     <script src="app.js"></script>

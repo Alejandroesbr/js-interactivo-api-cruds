@@ -1,85 +1,35 @@
-const form = document.getElementById("dataForm");
-const elementInput = document.getElementById("itemInput");
-const elementList = document.getElementById("itemList");
-const buttonSubmit = document.getElementById("buttonSubmit");
-const syncButton = document.getElementById("syncButton");
+document.addEventListener('DOMContentLoaded', (event) => {
 
-const mensajeFeedback = document.createElement("p");
-form.appendChild(mensajeFeedback);
+  const form = document.getElementById("dataForm");
+  const elementInput = document.getElementById("itemInput");
+  const elementList = document.getElementById("itemList");
+  const feedback = document.getElementById("messegeFeedback");
 
-let elementos = JSON.parse(localStorage.getItem("formElemento")) || [];
+  const API_URL = "http://localhost:8000/productos";
+  let elements = [];
+  let editID =  null;
 
-form.addEventListener("submit", function (event) {
-  event.preventDefault(); 
+// Validacion 1
 
-  const elementValue = elementInput.value.trim();
-
-  if (elementValue) {
-    const newElement = { nombre: elementValue }; 
-    elementos.push(newElement);                  
-    guardarElementoLocalStorage();
-    renderizarLista();
-    
-    elementInput.value = ""; 
+  function showFeedback(message, isError = false) {
+    feedback.textContent = message;
+    feedback.style.color = isError ? "red" : "green";
+    console.log (`[feedback] ${message}`);
   }
-});
 
-function guardarElementoLocalStorage() {
-  localStorage.setItem("formElemento", JSON.stringify(elementos));
+  async function loadElements() {
+    try {
+        const response = await fetch(API_URL);
+        if (!response.ok) throw new Error("Is not possible to call the API. ")
+        
+        elements = await response.json();
+        console.log("GET Successful, Response from the server:", elements);
+
+        //Local host sync
+
+        saveInLocalStorage();
+        renderList();
+    
+
+    console.log('DOM fully loaded and parsed');
 }
-
-function renderizarLista() {
-  elementList.innerHTML = ""; 
-
-  elementos.forEach(function (item, index) {
-    const fila = document.createElement("tr");
-    const nombreCelda = document.createElement("td");
-    const accionesCelda = document.createElement("td"); 
-    const editarBoton = document.createElement("button");
-    const eliminarBoton = document.createElement("button");
-
-    nombreCelda.textContent = item.nombre;
-    editarBoton.textContent = "Editar";
-    eliminarBoton.textContent = "Eliminar";
-
-    editarBoton.addEventListener("click", function() {
-        editarData(index);
-        });
-
-    eliminarBoton.addEventListener("click", function() {
-        eliminarData(index);
-    });
-
-
-    accionesCelda.appendChild(editarBoton);
-    accionesCelda.appendChild(eliminarBoton);
-
-    fila.appendChild(nombreCelda);
-    fila.appendChild(accionesCelda);
-
-    elementList.appendChild(fila);
-  });
-}
-
-function editarData(index) {
-  const item = elementos[index];
-  elementInput.value = item.nombre; 
-  
-  elementos.splice(index, 1); 
-  guardarElementoLocalStorage();
-  renderizarLista();
-}
-
-function eliminarData(index) {
-  const item = elementos[index];
-
-  elementos.splice(index, 1); 
-  guardarElementoLocalStorage();
-  renderizarLista();
-}
-
-
-
-// Renderizar al cargar la página
-renderizarLista();
-

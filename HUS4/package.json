@@ -1,0 +1,24 @@
+{
+  "name": "js-interactivo-api-cruds",
+  "version": "1.0.0",
+  "description": "M3_JS",
+  "main": "index.js",
+  "scripts": {
+    "server": "json-server --watch db.json --port 8000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alejandroesbr/js-interactivo-api-cruds.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Alejandroesbr/js-interactivo-api-cruds/issues"
+  },
+  "homepage": "https://github.com/Alejandroesbr/js-interactivo-api-cruds#readme",
+  "dependencies": {
+    "json-server": "^1.0.0-beta.15"
+  }
+}
