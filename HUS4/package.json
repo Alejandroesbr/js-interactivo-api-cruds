@@ -4,7 +4,7 @@
   "description": "M3_JS",
   "main": "index.js",
   "scripts": {
-    "server": "json-server --watch db.json --port 8000"
+    "dev": "json-server --watch db.json --port 8000"
   },
   "repository": {
     "type": "git",

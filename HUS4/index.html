@@ -2,29 +2,72 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
     <title>Semana 4 - Gestor de Elementos</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <h1>Gestor de Datos</h1>
 
-    <form id="dataForm">
-      <label for="itemInput">Nuevo elemento:</label>
-      <input
-        type="text"
-        id="itemInput"
-        placeholder="Ej. Comprar leche o Producto A"
-        required
-      />
-      <button id="buttonSubmit" type="submit">Agregar</button>
-    </form>
+  <body class="bg-light">
+    <div class="container py-5">
+      <div class="card shadow">
+        <div class="card-body">
+          <h1 class="text-center mb-4">
+            Gestor de Datos
+          </h1>
 
-    <div id="messegeFeedback"></div>
+          <form
+            id="dataForm"
+            class="mb-4"
+          >
+            <label
+              for="itemInput"
+              class="form-label"
+            >
+              Nuevo elemento
+            </label>
 
-    <h2>Lista de Elementos</h2>
-    <ul id="itemList"></ul>
+            <div class="input-group">
+              <input
+                type="text"
+                id="itemInput"
+                class="form-control"
+                required
+              />
 
-    <button id="syncButton">Sincronizar con la API</button>
+              <button
+                id="buttonSubmit"
+                type="submit"
+                class="btn btn-primary"
+              >
+                Agregar
+              </button>
+            </div>
+          </form>
+
+          <div
+            id="messegeFeedback"
+            class="fw-bold text-center mb-3"
+          ></div>
+
+          <h2 class="h4 mb-3">
+            Lista de Elementos
+          </h2>
+
+          <ul
+            id="itemList"
+            class="list-group"
+          ></ul>
+        </div>
+      </div>
+    </div>
 
     <script src="app.js"></script>
   </body>
